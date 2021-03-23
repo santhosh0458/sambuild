@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  pre_build:
+    commands:
+      - echo Installing Dependencies..............
+      - npm install
+  build:
+    commands:
+      - echo Building.............
+      - npm run-script build
+      - npm install -g serve
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base_directory: build
+
+
+
+
