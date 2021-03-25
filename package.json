@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "parcel build public/index.html && rm -rf public",
+    "build": "rect-scripts build",
     "deploy": "react-scripts deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

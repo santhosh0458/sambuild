@@ -13,11 +13,16 @@ phases:
       - echo Building.............
       - npm run-script build
       - npm install -g serve
-artifacts:
-  files:
-    - "**/*"
-  discard-paths: no
-  base_directory: build
+  post_build:
+    commands:
+      - echo Running post_building.....................
+      - echo Deploy app build to S3 bucket...................
+      - aws s3 cp --recursive ./build s3://test-lucy-client
+#artifacts:
+#  files:
+#    - "**/*"
+#  discard-paths: no
+#  base_directory: build
 
 
 
