@@ -1,9 +1,9 @@
 FROM node:9
 
-WORKDIR /demoapp
+WORKDIR /sambuild
 
 
-COPY package.json .
+COPY package.json 
 RUN npm install
 
 COPY . .
