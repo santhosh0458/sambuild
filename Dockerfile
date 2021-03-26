@@ -1,10 +1,9 @@
 FROM node:9
 
-WORKDIR /demoapp
+WORKDIR /sambuild
 
-RUN npm install -g contentful-cli
 
-COPY package.json .
+COPY package.json 
 RUN npm install
 
 COPY . .
