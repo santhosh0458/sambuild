@@ -5,10 +5,8 @@ name: Node.js CI
 
 on:
   push:
-    tags:
-      - '*-rc*'
     branches:
-#       - "master"
+      - "master"
   pull_request:
     branches: [ master ]
 
@@ -30,5 +28,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: Get the version
-      id: get_version
-      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      run: version_blue=$(grep blue ./release_version |cut -f 2 -d " ") && version_green=$(grep green ./release_version |cut -f 2 -d " ")
