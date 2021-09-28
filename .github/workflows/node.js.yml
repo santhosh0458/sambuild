@@ -8,7 +8,7 @@ on:
     tags:
       - '*-rc*'
     branches:
-      - "master"
+#       - "master"
   pull_request:
     branches: [ master ]
 
