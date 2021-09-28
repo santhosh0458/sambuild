@@ -1,0 +1,3 @@
+green: 'version: 1.0.0'
+blue: 'version: 1.0.1'
+description: 'this is the very first attempt to use release version file'
