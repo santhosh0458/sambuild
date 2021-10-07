@@ -14,8 +14,9 @@ on:
 jobs:
   build:
 
-    runs-on: ${{matrix.OperatorCode}}
-
+    runs-on: ubuntu-latest
+    needs: ${{matrix.OperatorCode}}
+    if: ${{matrix.OperatorCode == 'PAHALA'}}
     strategy:
       matrix:
         OperatorCode: [BUSSR, PAHALA, ADIBUZZ ]
