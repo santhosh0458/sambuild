@@ -4,14 +4,10 @@
 name: Node.js CI
 
 on:
-  push:
-    branches:
-      - "master"
-  pull_request:
-    branches: [ master ]
-  issues:
-    name:
-      OperatorCode: ''
+ workflow_dispatch:
+  inputs:
+    operatorcode:
+      description: 'Enter Operatorcode'
       required: true
       default: "BUSSR"
 
@@ -33,11 +29,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: App test
-      run: npm test --${{matrix.OperatorCode}}
     - name: APP build
       if: ${{matrix.OperatorCode == 'PAHALA'}}
-      run: npm run build
+      run: echo "OperatorCode is PAHALA"
     - name: Return message
       if: ${{matrix.OperatorCode == 'BUSSR'}}
       run: echo "OperatorCode is Default"
