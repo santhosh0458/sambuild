@@ -34,4 +34,7 @@ jobs:
       run: echo "OperatorCode is PAHALA"
     - name: Return message
       if: ${{matrix.OperatorCode == 'BUSSR'}}
-      run: echo "OperatorCode is Default"
+      run: echo "OperatorCode is BUSSR"
+    - name: operator code
+      if: ${{matrix.OperatorCode == 'ADIBUZZ'}}
+      run: echo"OperatorCode is ADIBUZZ"
