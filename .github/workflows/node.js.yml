@@ -36,8 +36,8 @@ jobs:
     - name: App test
       run: npm test --${{matrix.OperatorCode}}
     - name: APP build
-      if: ${{matrix.OperatorCode -- 'PAHALA'}}
+      if: ${{matrix.OperatorCode == 'PAHALA'}}
       run: npm run build
     - name: Return message
-      if: ${{matrix.OperatorCode -- 'BUSSR'}}
+      if: ${{matrix.OperatorCode == 'BUSSR'}}
       run: echo "OperatorCode is Default"
