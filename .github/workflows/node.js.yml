@@ -18,23 +18,17 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
         OperatorCode: [BUSSR, PAHALA, ADIBUZZ ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: APP build
+    - name: test operator
       if: ${{matrix.OperatorCode == 'PAHALA'}}
-      run: echo "OperatorCode is PAHALA"
+      run: echo ${{matrix.OperatorCode}}
     - name: Return message
       if: ${{matrix.OperatorCode == 'BUSSR'}}
-      run: echo "OperatorCode is BUSSR"
+      run: echo ${{matrix.OperatorCode}}
     - name: operator code
       if: ${{matrix.OperatorCode == 'ADIBUZZ'}}
-      run: echo"OperatorCode is ADIBUZZ"
+      run: echo ${{matrix.OperatorCode}}
