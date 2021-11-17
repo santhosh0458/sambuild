@@ -16,5 +16,5 @@ jobs:
        name: echo
        run: echo "Hello ${{ github.event.inputs.blue-green }}!"
      - if: false == ${{github.event.inputs.blue-green}}      
-       run: echo "Hello ${{ github.event.inputs.blue-green }}!
+       run: echo "Hello ${{ github.event.inputs.blue-green }}!"
   
