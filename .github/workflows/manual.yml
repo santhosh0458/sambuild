@@ -12,9 +12,9 @@ jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-     - if: blue == ${{github.event.inputs.blue-green}}
-       name: echo
-       run: echo "Hello ${{ github.event.inputs.blue-green }}!"
-     - if: false == ${{github.event.inputs.blue-green}}      
-       run: echo "Hello ${{ github.event.inputs.blue-green }}!"
+      - if: blue == ${{github.event.inputs.blue-green}}
+        name: echo
+        run: echo "Hello ${{ github.event.inputs.blue-green }}!"
+      - if: false == ${{github.event.inputs.blue-green}}      
+        run: echo "Hello ${{ github.event.inputs.blue-green }}!"
   
