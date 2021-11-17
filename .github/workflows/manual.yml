@@ -2,19 +2,19 @@ name: Manually triggered workflow
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
+      blue-green:
+        description: 'Enter to Switch selector for Blue/ Green Deployment'
         required: true
         default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
-        default: 'The Octoverse'
+
 
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Hello ${{ github.event.inputs.name }}!"
-          echo "- in ${{ github.event.inputs.home }}!"
+     - if: blue == ${{github.event.inputs.blue-green}}
+       name: echo
+       run: echo "Hello ${{ github.event.inputs.blue-green }}!"
+     - if: false == ${{github.event.inputs.blue-green}}      
+       run: echo "Hello ${{ github.event.inputs.blue-green }}!
+  
