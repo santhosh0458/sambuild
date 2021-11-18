@@ -15,7 +15,7 @@ jobs:
       - name: getting blue version
         id: main
         run: deploy=${{github.event.inputs.blue-green}} && echo "::set-output name=deploy::$deploy "
-        if: steps.main.outputs.deploy == 
+        if: steps.main.outputs.deploy == blue
       - name: enter
         run: echo "enter version is blue"
  
