@@ -25,6 +25,6 @@ jobs:
           tag: $TAG
 
       - name: Tag Existing Result
-        run: echo "${{ steps.check_tag.outputs.tag_exists }}"
+        run: echo "${{ steps.check_tag.outputs.tag_exists }}" && echo $TAG
 
   
