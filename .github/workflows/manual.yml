@@ -9,15 +9,19 @@ on:
 
 
 jobs:
-  say_hello:
+  action_test:
     runs-on: ubuntu-latest
     steps:
-      - name: getting blue version
-        id: main
-        run: deploy=${{github.event.inputs.blue-green}} && echo "::set-output name=deploy::$deploy"
-        if: contains(steps.main.outputs.deploy, 'blue')
-      - name: enter
-        run: echo "enter version is blue"
- 
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Check Existing Tag
+        uses: matheusraz/check-existing-tag-action@v1
+        id: check_tag       
+        with:
+          tag: v1.0.0-rc1
+
+      - name: Tag Existing Result
+        run: echo "${{ steps.check_tag.outputs.tag_exists }}"
 
   
