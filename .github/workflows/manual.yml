@@ -5,7 +5,7 @@ on:
       tag:
         description: 'Enter to Switch selector for Blue/ Green Deployment'
         required: true
-        default: 'Mona'
+        default: 'v1.0.0'
 
 
 jobs:
@@ -20,8 +20,9 @@ jobs:
         id: check_tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{github.event.inputs.tag}}
         with:
-          tag: v1.9.3
+          tag: $TAG
 
       - name: Tag Existing Result
         run: echo "${{ steps.check_tag.outputs.tag_exists }}"
