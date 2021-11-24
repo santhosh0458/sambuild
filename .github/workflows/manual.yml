@@ -2,10 +2,10 @@ name: Manually triggered workflow
 on:
   workflow_dispatch:
     inputs:
-      blue-green:
+      tag:
         description: 'Enter to Switch selector for Blue/ Green Deployment'
         required: true
-        default: 'Mona the Octocat'
+        default: 'Mona'
 
 
 jobs:
@@ -17,9 +17,11 @@ jobs:
 
       - name: Check Existing Tag
         uses: matheusraz/check-existing-tag-action@v1
-        id: check_tag       
+        id: check_tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag: v1.9.3
+          tag: v1.8.9
 
       - name: Tag Existing Result
         run: echo "${{ steps.check_tag.outputs.tag_exists }}"
