@@ -19,7 +19,7 @@ jobs:
         uses: matheusraz/check-existing-tag-action@v1
         id: check_tag       
         with:
-          tag: v1.0.0-rc1
+          tag: v1.0.0-rc2
 
       - name: Tag Existing Result
         run: echo "${{ steps.check_tag.outputs.tag_exists }}"
