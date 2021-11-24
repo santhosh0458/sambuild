@@ -11,6 +11,8 @@ on:
 jobs:
   action_test:
     runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -20,11 +22,10 @@ jobs:
         id: check_tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{github.event.inputs.tag}}
         with:
           tag: $TAG
 
       - name: Tag Existing Result
-        run: echo "${{ steps.check_tag.outputs.tag_exists }}" && echo $TAG
+        run: echo "${{ steps.check_tag.outputs.tag_exists }}" && echo "${{ github.event.inputs.tag }}"
 
   
