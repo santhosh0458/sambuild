@@ -14,13 +14,13 @@ jobs:
 #     env:
 #       TAG: ${{ github.event.inputs.tag }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Get current tag
-        id: get-current-tag
-        uses: zingimmick/github-action-get-current-tag@v1
-      - name: Print tag
-        run: echo ${{steps.get-current-tag.outputs.tag}}
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#       - name: Get current tag
+#         id: get-current-tag
+#         uses: zingimmick/github-action-get-current-tag@v1
+#       - name: Print tag
+#         run: echo ${{steps.get-current-tag.outputs.tag}}
 
 #       - name: Check Existing Tag
 #         uses: matheusraz/check-existing-tag-action@v1
@@ -32,7 +32,10 @@ jobs:
 
 #       - name: Tag Existing Result
 #         run: echo "${{ steps.check_tag.outputs.tag_exists }}" && echo "${{ github.event.inputs.tag }}"
-#       - name: describe tag
-#         run: TAG=$(git describe --tags) && echo $TAG
+      - name: describe tag
+        id: tag
+        run: TAG=$(echo $(git describe --tags)) && echo "::set-output-name=TAG::$TAG  && echo "tag is $TAG"
+#       - name: prinnt tag  
+#         run: TAG=$(echo ${{steps.tag.outputs.tag}}) && echo $TAG
 
   
