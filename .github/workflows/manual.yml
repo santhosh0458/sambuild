@@ -34,7 +34,7 @@ jobs:
 #         run: echo "${{ steps.check_tag.outputs.tag_exists }}" && echo "${{ github.event.inputs.tag }}"
       - name: describe tag
         id: tag
-        run: TAG=$(echo $(git describe --tags)) && echo "::set-output-name=TAG::$TAG  && echo "tag is $TAG"
+        run: TAG=$(echo $(git describe --tags)) && echo "::set-output-name=TAG::$TAG"  && echo "tag is $TAG"
 #       - name: prinnt tag  
 #         run: TAG=$(echo ${{steps.tag.outputs.tag}}) && echo $TAG
 
