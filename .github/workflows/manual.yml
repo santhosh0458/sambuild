@@ -11,22 +11,22 @@ on:
 jobs:
   action_test:
     runs-on: ubuntu-latest
-    env:
-      TAG: ${{ github.event.inputs.tag }}
+#     env:
+#       TAG: ${{ github.event.inputs.tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Check Existing Tag
-        uses: matheusraz/check-existing-tag-action@v1
-        id: check_tag
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag: ${{ github.event.inputs.tag }}
+#       - name: Check Existing Tag
+#         uses: matheusraz/check-existing-tag-action@v1
+#         id: check_tag
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         with:
+#           tag: ${{ github.event.inputs.tag }}
 
-      - name: Tag Existing Result
-        run: echo "${{ steps.check_tag.outputs.tag_exists }}" && echo "${{ github.event.inputs.tag }}"
+#       - name: Tag Existing Result
+#         run: echo "${{ steps.check_tag.outputs.tag_exists }}" && echo "${{ github.event.inputs.tag }}"
       - name: describe tag
         run: TAG=$(echo $(git describe --tags)) && echo $TAG
 
