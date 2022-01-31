@@ -23,7 +23,7 @@ jobs:
         id: get-current-tag
         uses: zingimmick/github-action-get-current-tag@v1
       - name: Print tag
-        run: echo ${{steps.get-current-tag.outputs.tag}}
+        run: TAG=$(echo ${{steps.get-current-tag.outputs.tag}}) && echo $TAG
 
 #       - name: Check Existing Tag
 #         uses: matheusraz/check-existing-tag-action@v1
