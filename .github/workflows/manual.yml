@@ -27,5 +27,7 @@ jobs:
 
       - name: Tag Existing Result
         run: echo "${{ steps.check_tag.outputs.tag_exists }}" && echo "${{ github.event.inputs.tag }}"
+      - name: describe tag
+        run: TAG=\$(echo \$(git describe --tags)) && echo $TAG
 
   
