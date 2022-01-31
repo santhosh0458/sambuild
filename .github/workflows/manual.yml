@@ -1,11 +1,14 @@
 name: Manually triggered workflow
 on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Enter to Switch selector for Blue/ Green Deployment'
-        required: true
-        default: 'v1.0.0'
+  push:
+    tags:
+      - "*"
+#   workflow_dispatch:
+#     inputs:
+#       tag:
+#         description: 'Enter to Switch selector for Blue/ Green Deployment'
+#         required: true
+#         default: 'v1.0.0'
 
 
 jobs:
@@ -16,11 +19,11 @@ jobs:
     steps:
 #       - name: Checkout
 #         uses: actions/checkout@v2
-#       - name: Get current tag
-#         id: get-current-tag
-#         uses: zingimmick/github-action-get-current-tag@v1
-#       - name: Print tag
-#         run: echo ${{steps.get-current-tag.outputs.tag}}
+      - name: Get current tag
+        id: get-current-tag
+        uses: zingimmick/github-action-get-current-tag@v1
+      - name: Print tag
+        run: echo ${{steps.get-current-tag.outputs.tag}}
 
 #       - name: Check Existing Tag
 #         uses: matheusraz/check-existing-tag-action@v1
@@ -32,9 +35,9 @@ jobs:
 
 #       - name: Tag Existing Result
 #         run: echo "${{ steps.check_tag.outputs.tag_exists }}" && echo "${{ github.event.inputs.tag }}"
-      - name: describe tag
-        id: tag
-        run: TAG=$(echo $(git describe --tags)) && echo "::set-output-name=TAG::$TAG"  && echo "tag is $TAG"
+#       - name: describe tag
+#         id: tag
+#         run: TAG=$(echo $(git describe --tags)) && echo "::set-output-name=TAG::$TAG"  && echo "tag is $TAG"
 #       - name: prinnt tag  
 #         run: TAG=$(echo ${{steps.tag.outputs.tag}}) && echo $TAG
 
