@@ -26,7 +26,7 @@ jobs:
         id: print-tag
         run: TAG=$(echo ${{steps.get-current-tag.outputs.tag}}) && echo "::set-output-name=TAG::$TAG"  && echo "tag is $TAG"
       - name: get tag
-        run: echo $TAG && echo ${{steps.print-tag.outputs.TAG}}
+        run: echo ${{steps.get-current-tag.outputs.tag}}
 
 #       - name: Check Existing Tag
 #         uses: matheusraz/check-existing-tag-action@v1
