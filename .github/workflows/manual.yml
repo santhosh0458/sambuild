@@ -30,7 +30,7 @@ jobs:
         - name: getting and setting api version available
           id: set-api-version
           run: |
-            version_blue=$(grep blue ./release_version |cut -f 2 -d " ") && version_green=$(grep green ./release_version |cut -f 2 -d " ")
+            version_blue=$(grep blue /release_version |cut -f 2 -d " ") && version_green=$(grep green /release_version |cut -f 2 -d " ")
             echo $version_blue && echo $version_green
 
 #       - name: Check Existing Tag
