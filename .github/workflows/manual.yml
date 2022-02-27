@@ -1,8 +1,8 @@
 name: Manually triggered workflow
 on:
   push:
-    tags:
-      - "*"
+    branches:
+      - "master"
 #   workflow_dispatch:
 #     inputs:
 #       tag:
@@ -19,14 +19,19 @@ jobs:
     steps:
 #       - name: Checkout
 #         uses: actions/checkout@v2
-      - name: Get current tag
-        id: get-current-tag
-        uses: zingimmick/github-action-get-current-tag@v1
-      - name: Print tag
-        id: print-tag
-        run: TAG=$(echo ${{steps.get-current-tag.outputs.tag}}) && echo "::set-output-name=TAG::$TAG"  && echo "tag is $TAG"
-      - name: get tag
-        run: echo ${{steps.get-current-tag.outputs.tag}}
+#       - name: Get current tag
+#         id: get-current-tag
+#         uses: zingimmick/github-action-get-current-tag@v1
+#       - name: Print tag
+#         id: print-tag
+#         run: TAG=$(echo ${{steps.get-current-tag.outputs.tag}}) && echo "::set-output-name=TAG::$TAG"  && echo "tag is $TAG"
+#       - name: get tag
+#         run: echo ${{steps.get-current-tag.outputs.tag}}
+        - name: getting and setting api version available
+          id: set-api-version
+          run: |
+            version_blue=$(grep blue ./release_version |cut -f 2 -d " ") && version_green=$(grep green ./release_version |cut -f 2 -d " ")
+            echo $version_blue && echo $version_green
 
 #       - name: Check Existing Tag
 #         uses: matheusraz/check-existing-tag-action@v1
