@@ -14,11 +14,14 @@ on:
 jobs:
   action_test:
     runs-on: ubuntu-latest
+    if: contains(github.event.push, 'public/**')
 #     env:
 #       TAG: ${{ github.event.inputs.tag }}
     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: print hello
+        run: echo 'Hello this is Santhosh'
 #       - name: Get current tag
 #         id: get-current-tag
 #         uses: zingimmick/github-action-get-current-tag@v1
@@ -27,11 +30,11 @@ jobs:
 #         run: TAG=$(echo ${{steps.get-current-tag.outputs.tag}}) && echo "::set-output-name=TAG::$TAG"  && echo "tag is $TAG"
 #       - name: get tag
 #         run: echo ${{steps.get-current-tag.outputs.tag}}
-        - name: getting and setting api version available
-          id: set-api-version
-          run: |
-            version_blue=$(grep blue /release_version |cut -f 2 -d " ") && version_green=$(grep green /release_version |cut -f 2 -d " ")
-            echo $version_blue && echo $version_green
+#         - name: getting and setting api version available
+#           id: set-api-version
+#           run: |
+#             version_blue=$(grep blue /release_version |cut -f 2 -d " ") && version_green=$(grep green /release_version |cut -f 2 -d " ")
+#             echo $version_blue && echo $version_green
 
 #       - name: Check Existing Tag
 #         uses: matheusraz/check-existing-tag-action@v1
