@@ -14,7 +14,7 @@ on:
 jobs:
   action_test:
     runs-on: ubuntu-latest
-    if: contains(github.event.push, 'public/**')
+    if: github.event.push == 'public/**'
 #     env:
 #       TAG: ${{ github.event.inputs.tag }}
     steps:
